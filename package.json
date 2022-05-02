@@ -1,0 +1,23 @@
+{
+  "name": "3dcitydb-web-map-1.6.2",
+  "version": "1.0.0",
+  "description": "Just testing for now",
+  "main": "server.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "compression": "^1.0.8",
+    "express": "^4.4.4",
+    "jsdoc": "^3.3.0-alpha9",
+    "yargs": "^1.2.6",
+    "request": "^2.36.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
