@@ -120,7 +120,12 @@
     Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNGVkNjUzNy1kZTliLTRmZDgtYTg2Mi1jYTE0NjkwNDg4NTMiLCJpZCI6NjE5MDEsImlhdCI6MTYyNjQ0ODc2M30.eQkSWPaD_VAKmlq1ne02DfpLDW0hGzlYbZysW6si-04';
 
     var viewer = new Cesium.Viewer('cesiumContainer', {
-        baseLayerPicker: false
+        baseLayerPicker: false,
+        selectionIndicator: false,
+        vrButton: false,
+        imageryProvider: new Cesium.createOpenStreetMapImageryProvider({
+            url: "//a.tile.openstreetmap.org/"
+        })
     });
     var extent = new Cesium.Rectangle.fromDegrees(21.538927, 57.3906205, 21.5430281, 57.3930012);
     viewer.camera.setView({destination: extent})
@@ -137,27 +142,37 @@
     var addLayers = function() {
 
         myBuildingLayer1 = new CitydbKmlLayer({
-            url : './kml/test_building_63.kml',
+            url : './kml/test_building_33.kml',
         });
 
         myBuildingLayer2 = new CitydbKmlLayer({
             url : './kml/test_building_75.kml',
         });
 
+        // ostgalsRegion = new CitydbKmlLayer({
+        //     url : './kml/region_50.kml',
+        // });
+
         var promise = webMap.addLayer(myBuildingLayer1);           
         Cesium.when(promise, function(loadedcitydbLayer){
             loadedcitydbLayer.zoomToStartPosition();
         });
 
-        var promise = webMap.addLayer(myBuildingLayer2);           
-        Cesium.when(promise, function(loadedcitydbLayer){
-            loadedcitydbLayer.zoomToStartPosition();
-        });
+        // var promise = webMap.addLayer(myBuildingLayer2);           
+        // Cesium.when(promise, function(loadedcitydbLayer){
+        //     loadedcitydbLayer.zoomToStartPosition();
+        // });
+
+        // var promise = webMap.addLayer(ostgalsRegion);           
+        // Cesium.when(promise, function(loadedcitydbLayer){
+        //     loadedcitydbLayer.zoomToStartPosition();
+        // });
     };
 
     var removeLayers = function() {
             webMap.removeLayer(myBuildingLayer1.id);
-            webMap.removeLayer(myBuildingLayer2.id);
+            // webMap.removeLayer(myBuildingLayer2.id);
+            // webMap.removeLayer(ostgalsRegion.id);
     };
 
     // Sign in utilities
